@@ -9,12 +9,12 @@ import ru.wtfis.core.Ticker;
 import ru.wtfis.model.Avatar;
 
 @SpringBootApplication
-public class DemoApplication {
+public class RZPGApplication {
     @Autowired
     private Ticker ticker;
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(RZPGApplication.class, args);
     }
 
     @Bean
@@ -25,7 +25,6 @@ public class DemoApplication {
                 .addComponent(new MoveComponent())
                 .addComponent(new ObstacleComponent());
 
-        System.out.println("AVATAR");
         ticker.loop();
         return avatar;
     }

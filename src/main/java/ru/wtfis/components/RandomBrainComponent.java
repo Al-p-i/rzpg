@@ -9,26 +9,29 @@ import java.util.Random;
  */
 public class RandomBrainComponent extends BrainComponent {
     private final Random random = new Random();
-    @Autowired
-    private MoveRegistry moveRegistry;
+    private MoveRegistry moveRegistry = MoveRegistry.getInstance();
+    private BrainRegistry brainRegistry = BrainRegistry.getInstance();
+
+    public RandomBrainComponent() {
+        brainRegistry.register(this);
+    }
 
     @Override
-    public Action getAction() {
+    public void act() {
         Action action = Action.values()[random.nextInt(Action.values().length)];
         switch (action) {
             case MOVE_UP:
                 moveRegistry.register(require(MoveComponent.class), MoveComponent.Direction.UP);
-                return action;
+                return;
             case MOVE_DOWN:
                 moveRegistry.register(require(MoveComponent.class), MoveComponent.Direction.DOWN);
-                return action;
+                return;
             case MOVE_RIGHT:
                 moveRegistry.register(require(MoveComponent.class), MoveComponent.Direction.RIGHT);
-                return action;
+                return;
             case MOVE_LEFT:
                 moveRegistry.register(require(MoveComponent.class), MoveComponent.Direction.LEFT);
-                return action;
+                return;
         }
-        return action;
     }
 }

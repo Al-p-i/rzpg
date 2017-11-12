@@ -1,6 +1,5 @@
 package ru.wtfis.components;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import ru.wtfis.model.Position;
 
 /**
@@ -9,10 +8,10 @@ import ru.wtfis.model.Position;
 public class MoveComponent extends Component {
     private int maxSpeed;
     private int priority;
-    @Autowired
-    private MoveRegistry moveRegistry;
+    private MoveRegistry moveRegistry = MoveRegistry.getInstance();
 
     public MoveComponent() {
+        this.maxSpeed = 1;
     }
 
     public void setMaxSpeed(int maxSpeed) {

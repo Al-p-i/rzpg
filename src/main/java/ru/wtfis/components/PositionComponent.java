@@ -8,6 +8,10 @@ import ru.wtfis.model.Position;
 public class PositionComponent extends Component {
     private Position position;
 
+    public PositionComponent() {
+        this.position = new Position(0, 0);
+    }
+
     public Position getPosition() {
         return position;
     }
